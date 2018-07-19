@@ -1,6 +1,6 @@
 {
   "name": "Hassio Hubot",
-  "version": "0.10",
+  "version": "0.11",
   "slug": "hassio_hubot",
   "description": "Packaged Hubot and hubot-homeassistant for Hassio",
   "url": "https://github.com/MrRaph/hassio-addons/tree/master/hassio-hubot",
