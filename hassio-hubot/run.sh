@@ -27,16 +27,15 @@ if [ -z "${UUID}" ]; then
   echo $NEW_CONF > $CONFIG_PATH
 fi
 
-mkdir bot
-chmod -R g+rwx /hubot
-cd /hubot/bot
-
-ls -lrt .
-ls -lrt ./bin
-
+#mkdir bot
+#chmod -R g+rwx /hubot
+#cd /hubot/bot
 
 yo hubot --owner="Hubot HomeAssistant" --name="Hubot" --adapter=slack
 npm install hubot-home-assistant --save
+
+ls -lrt .
+ls -lrt ./bin
 
 HUBOT_SLACK_TOKEN=$HUBOT_SLACK_TOKEN HUBOT_HOME_ASSISTANT_HOST="$HUBOT_HOME_ASSISTANT_HOST" \
 HUBOT_HOME_ASSISTANT_API_PASSWORD=$HUBOT_HOME_ASSISTANT_API_PASSWORD \
