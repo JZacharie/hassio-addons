@@ -2,13 +2,20 @@
 set -e
 CONFIG_PATH=/data/options.json
 
-UUID=$(jq --raw-output ".uuid // empty" $CONFIG_PATH)
-HUBOT_SLACK_TOKEN=$(jq --raw-output ".HUBOT_SLACK_TOKEN" $CONFIG_PATH)
-HUBOT_HOME_ASSISTANT_HOST=$(jq --raw-output ".HUBOT_HOME_ASSISTANT_HOST" $CONFIG_PATH)
-HUBOT_HOME_ASSISTANT_API_PASSWORD=$(jq --raw-output ".HUBOT_HOME_ASSISTANT_API_PASSWORD" $CONFIG_PATH)
-HUBOT_HOME_ASSISTANT_MONITOR_EVENTS=$(jq --raw-output ".HUBOT_HOME_ASSISTANT_MONITOR_EVENTS" $CONFIG_PATH)
-HUBOT_HOME_ASSISTANT_MONITOR_ALL_ENTITIES=$(jq --raw-output ".HUBOT_HOME_ASSISTANT_MONITOR_ALL_ENTITIES" $CONFIG_PATH)
-HUBOT_HOME_ASSISTANT_EVENTS_DESTINATION=$(jq --raw-output ".HUBOT_HOME_ASSISTANT_EVENTS_DESTINATION" $CONFIG_PATH)
+DEFAULT_UUID=$(cat /proc/sys/kernel/random/uuid)
+DEFAULT_HUBOT_SLACK_TOKEN=""
+DEFAULT_HUBOT_HOME_ASSISTANT_HOST=""
+DEFAULT_HUBOT_HOME_ASSISTANT_API_PASSWORD=""
+DEFAULT_HUBOT_HOME_ASSISTANT_MONITOR_EVENTS="True"
+DEFAULT_HUBOT_HOME_ASSISTANT_MONITOR_ALL_ENTITIES="True"
+DEFAULT_HUBOT_HOME_ASSISTANT_EVENTS_DESTINATION="True"
+
+HUBOT_SLACK_TOKEN=$(jq --raw-output ".hubot_slack_token // empty" $CONFIG_PATH)
+HUBOT_HOME_ASSISTANT_HOST=$(jq --raw-output ".hubot_home_assistant_host // empty" $CONFIG_PATH)
+HUBOT_HOME_ASSISTANT_API_PASSWORD=$(jq --raw-output ".hubot_home_assistant_api_password // empty" $CONFIG_PATH)
+HUBOT_HOME_ASSISTANT_MONITOR_EVENTS=$(jq --raw-output ".hubot_home_assistant_monitor_events // True" $CONFIG_PATH)
+HUBOT_HOME_ASSISTANT_MONITOR_ALL_ENTITIES=$(jq --raw-output ".hubot_home_assistant_monitor_all_entities // True" $CONFIG_PATH)
+HUBOT_HOME_ASSISTANT_EVENTS_DESTINATION=$(jq --raw-output ".hubot_home_assistant_events_destination // #home-assistant" $CONFIG_PATH)
 
 # Store generated UUID if not set
 if [ -z "${UUID}" ]; then
