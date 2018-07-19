@@ -15,4 +15,7 @@ RUN apk add --update nodejs nodejs-npm jq curl && \
 COPY external-scripts.json /external-scripts.json
 COPY run.sh /
 RUN chmod a+x /run.sh
+
+WORKDIR /data
+
 CMD [ "/run.sh" ]

@@ -2,7 +2,7 @@
 #set -e
 CONFIG_PATH=/data/options.json
 
-mkdir -p /root/bot && cd /root/bot
+mkdir -p /data/bot && cd /data/bot
 
 
 whoami
