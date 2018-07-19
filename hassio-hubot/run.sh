@@ -4,13 +4,6 @@ CONFIG_PATH=/data/options.json
 
 #rm -rf *
 #mkdir -p bot && chmod -R 777 bot && cd bot
-chmod -R 777 /data
-rm -f package.json
-
-whoami
-pwd
-ls -lrt .
-
 
 DEFAULT_UUID=$(cat /proc/sys/kernel/random/uuid)
 DEFAULT_HUBOT_SLACK_TOKEN=""
@@ -37,24 +30,21 @@ if [ -z "${UUID}" ]; then
   echo $NEW_CONF > $CONFIG_PATH
 fi
 
-#mkdir bot
-#chmod -R g+rwx /hubot
-#cd /hubot/bot
+chmod -R g+rwx /hubot
+cd /hubot
 
-npm config set unsafe-perm true && npm install -g yo generator-hubot
-yo hubot --owner="Hubot HomeAssistant" --name="Hubot" --adapter=slack --description="Homeassistant Hubot" -f
-npm install hubot-home-assistant --save
-
-cat /external-scripts.json > ./external-scripts.json
+cat /external-scripts.json > /data/external-scripts.json
+rm -f /hubot/external-scripts.json
+ln -s /data/external-scripts.json /hubot/external-scripts.json
 
 ls -lrta .
 ls -lrt ./bin
 
-chmod +x ./bin/hubot
+chmod +x /hubot/bin/hubot
 
 HUBOT_SLACK_TOKEN=$HUBOT_SLACK_TOKEN HUBOT_HOME_ASSISTANT_HOST="$HUBOT_HOME_ASSISTANT_HOST" \
 HUBOT_HOME_ASSISTANT_API_PASSWORD=$HUBOT_HOME_ASSISTANT_API_PASSWORD \
 HUBOT_HOME_ASSISTANT_MONITOR_EVENTS=$HUBOT_HOME_ASSISTANT_MONITOR_EVENTS \
 HUBOT_HOME_ASSISTANT_MONITOR_ALL_ENTITIES=$HUBOT_HOME_ASSISTANT_MONITOR_ALL_ENTITIES \
 HUBOT_HOME_ASSISTANT_EVENTS_DESTINATION="$HUBOT_HOME_ASSISTANT_EVENTS_DESTINATION" \
-./bin/hubot --adapter slack
+/hubot/bin/hubot --adapter slack
