@@ -1,8 +1,13 @@
 #!/bin/bash
-set -e
+#set -e
 CONFIG_PATH=/data/options.json
 
 mkdir -p /root/bot && cd /root/bot
+
+
+whoami
+pwd
+ls -lrt /
 
 
 DEFAULT_UUID=$(cat /proc/sys/kernel/random/uuid)
