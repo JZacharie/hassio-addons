@@ -6,7 +6,7 @@ ENV LANG C.UTF-8
 RUN apk add --update nodejs nodejs-npm jq curl && \
     npm config set unsafe-perm true && npm install -g yo generator-hubot && \
     mkdir -p /hubot /root/.config/insight-nodejs && \
-    chmod g+rwx /root /root/.config /root/.config/insight-nodejs /hubot && \
+    chmod g+rwx /root /root/.npm /root/.config /root/.config/insight-nodejs /hubot && \
     chmod -R 777 /hubot && cd /hubot && \
     yo hubot --owner="Hubot HomeAssistant" --name="Hubot" --adapter=slack --description="Homeassistant Hubot" -f && \
     npm install hubot-home-assistant --save
