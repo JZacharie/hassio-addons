@@ -2,13 +2,13 @@
 #set -e
 CONFIG_PATH=/data/options.json
 
-rm -rf *
-mkdir -p bot && chmod -R 777 bot && cd bot
-touch bot/package.json
+#rm -rf *
+#mkdir -p bot && chmod -R 777 bot && cd bot
+touch package.json
 
 whoami
 pwd
-ls -lrt /
+ls -lrt .
 
 
 DEFAULT_UUID=$(cat /proc/sys/kernel/random/uuid)
