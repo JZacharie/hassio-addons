@@ -31,10 +31,11 @@ fi
 #chmod -R g+rwx /hubot
 #cd /hubot/bot
 
+npm config set unsafe-perm true && npm install -g yo generator-hubot
 yo hubot --owner="Hubot HomeAssistant" --name="Hubot" --adapter=slack
 npm install hubot-home-assistant --save
 
-ls -lrt .
+ls -lrta .
 ls -lrt ./bin
 
 HUBOT_SLACK_TOKEN=$HUBOT_SLACK_TOKEN HUBOT_HOME_ASSISTANT_HOST="$HUBOT_HOME_ASSISTANT_HOST" \
