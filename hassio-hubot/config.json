@@ -15,7 +15,6 @@
     "HUBOT_HOME_ASSISTANT_EVENTS_DESTINATION": "#home-assistant"
   },
   "schema": {
-    "log_level": "str",
     "HUBOT_SLACK_TOKEN": "str",
     "HUBOT_HOME_ASSISTANT_HOST": "str",
     "HUBOT_HOME_ASSISTANT_API_PASSWORD": "str",
