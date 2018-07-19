@@ -11,8 +11,8 @@
     "hubot_slack_token": "",
     "hubot_home_assistant_host": "",
     "hubot_home_assistant_api_password": "",
-    "hubot_home_assistant_monitor_events": "true",
-    "hubot_home_assistant_monitor_all_entities": "true",
+    "hubot_home_assistant_monitor_events": "Yes",
+    "hubot_home_assistant_monitor_all_entities": "Yes",
     "hubot_home_assistant_events_destination": "#home-assistant"
   },
   "schema": {
