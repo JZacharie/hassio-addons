@@ -10,6 +10,7 @@ DEFAULT_HUBOT_HOME_ASSISTANT_MONITOR_EVENTS="Yes"
 DEFAULT_HUBOT_HOME_ASSISTANT_MONITOR_ALL_ENTITIES="Yes"
 DEFAULT_HUBOT_HOME_ASSISTANT_EVENTS_DESTINATION="#home-assistant"
 
+UUID=$(jq --raw-output ".uuid // empty" $CONFIG_PATH)
 HUBOT_SLACK_TOKEN=$(jq --raw-output ".hubot_slack_token // empty" $CONFIG_PATH)
 HUBOT_HOME_ASSISTANT_HOST=$(jq --raw-output ".hubot_home_assistant_host // empty" $CONFIG_PATH)
 HUBOT_HOME_ASSISTANT_API_PASSWORD=$(jq --raw-output ".hubot_home_assistant_api_password // empty" $CONFIG_PATH)
