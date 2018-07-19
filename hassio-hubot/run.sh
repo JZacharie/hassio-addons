@@ -2,7 +2,22 @@
 set -e
 CONFIG_PATH=/data/options.json
 
-PLAIN=$(jq --raw-output ".plain" $CONFIG_PATH)
+UUID=$(jq --raw-output ".uuid // empty" $CONFIG_PATH)
+HUBOT_SLACK_TOKEN=$(jq --raw-output ".HUBOT_SLACK_TOKEN" $CONFIG_PATH)
+HUBOT_HOME_ASSISTANT_HOST=$(jq --raw-output ".HUBOT_HOME_ASSISTANT_HOST" $CONFIG_PATH)
+HUBOT_HOME_ASSISTANT_API_PASSWORD=$(jq --raw-output ".HUBOT_HOME_ASSISTANT_API_PASSWORD" $CONFIG_PATH)
+HUBOT_HOME_ASSISTANT_MONITOR_EVENTS=$(jq --raw-output ".HUBOT_HOME_ASSISTANT_MONITOR_EVENTS" $CONFIG_PATH)
+HUBOT_HOME_ASSISTANT_MONITOR_ALL_ENTITIES=$(jq --raw-output ".HUBOT_HOME_ASSISTANT_MONITOR_ALL_ENTITIES" $CONFIG_PATH)
+HUBOT_HOME_ASSISTANT_EVENTS_DESTINATION=$(jq --raw-output ".HUBOT_HOME_ASSISTANT_EVENTS_DESTINATION" $CONFIG_PATH)
+
+# Store generated UUID if not set
+if [ -z "${UUID}" ]; then
+  UUID=${DEFAULT_UUID^^}
+  NEW_CONF=$(jq --arg uuid ${UUID} '. + {uuid: $uuid}' $CONFIG_PATH)
+  echo "No UUID found, updating config with a generated UUID"
+  echo $NEW_CONF
+  echo $NEW_CONF > $CONFIG_PATH
+fi
 
 cd /hubot
 
