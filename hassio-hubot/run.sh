@@ -2,8 +2,9 @@
 #set -e
 CONFIG_PATH=/data/options.json
 
+rm -rf *
 mkdir -p bot && chmod -R 777 bot && cd bot
-
+touch bot/package.json
 
 whoami
 pwd
