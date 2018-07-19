@@ -2,6 +2,9 @@
 set -e
 CONFIG_PATH=/data/options.json
 
+mkdir -p /root/bot && cd /root/bot
+
+
 DEFAULT_UUID=$(cat /proc/sys/kernel/random/uuid)
 DEFAULT_HUBOT_SLACK_TOKEN=""
 DEFAULT_HUBOT_HOME_ASSISTANT_HOST=""
