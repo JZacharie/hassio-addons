@@ -32,7 +32,7 @@ fi
 #cd /hubot/bot
 
 npm config set unsafe-perm true && npm install -g yo generator-hubot
-yo hubot --owner="Hubot HomeAssistant" --name="Hubot" --adapter=slack
+yo hubot --owner="Hubot HomeAssistant" --name="Hubot" --adapter=slack --description="Homeassistant Hubot"
 npm install hubot-home-assistant --save
 
 cat /external-scripts.json > ./external-scripts.json
