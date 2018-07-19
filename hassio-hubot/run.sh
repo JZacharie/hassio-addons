@@ -14,9 +14,9 @@ UUID=$(jq --raw-output ".uuid // empty" $CONFIG_PATH)
 HUBOT_SLACK_TOKEN=$(jq --raw-output ".hubot_slack_token // empty" $CONFIG_PATH)
 HUBOT_HOME_ASSISTANT_HOST=$(jq --raw-output ".hubot_home_assistant_host // empty" $CONFIG_PATH)
 HUBOT_HOME_ASSISTANT_API_PASSWORD=$(jq --raw-output ".hubot_home_assistant_api_password // empty" $CONFIG_PATH)
-HUBOT_HOME_ASSISTANT_MONITOR_EVENTS=$(jq --raw-output ".hubot_home_assistant_monitor_events // ${DEFAULT_HUBOT_HOME_ASSISTANT_MONITOR_EVENTS}" $CONFIG_PATH)
-HUBOT_HOME_ASSISTANT_MONITOR_ALL_ENTITIES=$(jq --raw-output ".hubot_home_assistant_monitor_all_entities // ${DEFAULT_HUBOT_HOME_ASSISTANT_MONITOR_ALL_ENTITIES}" $CONFIG_PATH)
-HUBOT_HOME_ASSISTANT_EVENTS_DESTINATION=$(jq --raw-output ".hubot_home_assistant_events_destination // ${DEFAULT_HUBOT_HOME_ASSISTANT_EVENTS_DESTINATION}" $CONFIG_PATH)
+HUBOT_HOME_ASSISTANT_MONITOR_EVENTS=$(jq --raw-output ".hubot_home_assistant_monitor_events // empty" $CONFIG_PATH)
+HUBOT_HOME_ASSISTANT_MONITOR_ALL_ENTITIES=$(jq --raw-output ".hubot_home_assistant_monitor_all_entities // empty" $CONFIG_PATH)
+HUBOT_HOME_ASSISTANT_EVENTS_DESTINATION=$(jq --raw-output ".hubot_home_assistant_events_destination // empty $CONFIG_PATH)
 
 # Store generated UUID if not set
 if [ -z "${UUID}" ]; then
