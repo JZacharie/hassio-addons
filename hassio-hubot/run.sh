@@ -31,6 +31,10 @@ mkdir bot
 chmod -R g+rwx /hubot
 cd /hubot/bot
 
+ls -lrt .
+ls -lrt ./bin
+
+
 yo hubot --owner="Hubot HomeAssistant" --name="Hubot" --adapter=slack
 npm install hubot-home-assistant --save
 
