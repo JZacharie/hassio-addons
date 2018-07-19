@@ -1,0 +1,26 @@
+{
+  "name": "Hassio Hubot",
+  "version": "1",
+  "slug": "hassio_hubot",
+  "description": "Packaged Hubot and hubot-homeassistant for Hassio",
+  "startup": "services",
+  "boot": "auto",
+  "options": {
+    "log_level": "info",
+    "HUBOT_SLACK_TOKEN": "info",
+    "HUBOT_HOME_ASSISTANT_HOST": "",
+    "HUBOT_HOME_ASSISTANT_API_PASSWORD": "",
+    "HUBOT_HOME_ASSISTANT_MONITOR_EVENTS": true,
+    "HUBOT_HOME_ASSISTANT_MONITOR_ALL_ENTITIES": false,
+    "HUBOT_HOME_ASSISTANT_EVENTS_DESTINATION": "#général"
+  },
+  "schema": {
+    "log_level": "str",
+    "HUBOT_SLACK_TOKEN": "str",
+    "HUBOT_HOME_ASSISTANT_HOST": "str",
+    "HUBOT_HOME_ASSISTANT_API_PASSWORD": "str",
+    "HUBOT_HOME_ASSISTANT_MONITOR_EVENTS": "str"
+    "HUBOT_HOME_ASSISTANT_MONITOR_ALL_ENTITIES": "str",
+    "HUBOT_HOME_ASSISTANT_EVENTS_DESTINATION": "str"
+  }
+}
