@@ -22,5 +22,6 @@
     "HUBOT_HOME_ASSISTANT_MONITOR_EVENTS": "str"
     "HUBOT_HOME_ASSISTANT_MONITOR_ALL_ENTITIES": "str",
     "HUBOT_HOME_ASSISTANT_EVENTS_DESTINATION": "str"
-  }
+  },
+  "image": "mrraph/{arch}-hassio-addon-hubot"
 }
