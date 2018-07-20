@@ -5,7 +5,6 @@ CONFIG_PATH=/data/options.json
 #rm -rf *
 #mkdir -p bot && chmod -R 777 bot && cd bot
 
-DEFAULT_UUID=$(cat /proc/sys/kernel/random/uuid)
 DEFAULT_HUBOT_SLACK_TOKEN=""
 DEFAULT_HUBOT_HOME_ASSISTANT_HOST=""
 DEFAULT_HUBOT_HOME_ASSISTANT_API_PASSWORD=""
@@ -13,7 +12,6 @@ DEFAULT_HUBOT_HOME_ASSISTANT_MONITOR_EVENTS="Yes"
 DEFAULT_HUBOT_HOME_ASSISTANT_MONITOR_ALL_ENTITIES="Yes"
 DEFAULT_HUBOT_HOME_ASSISTANT_EVENTS_DESTINATION="#home-assistant"
 
-UUID=$(jq --raw-output ".uuid // empty" $CONFIG_PATH)
 HUBOT_SLACK_TOKEN=$(jq --raw-output ".hubot_slack_token // empty" $CONFIG_PATH)
 HUBOT_HOME_ASSISTANT_HOST=$(jq --raw-output ".hubot_home_assistant_host // empty" $CONFIG_PATH)
 HUBOT_HOME_ASSISTANT_API_PASSWORD=$(jq --raw-output ".hubot_home_assistant_api_password // empty" $CONFIG_PATH)
@@ -21,20 +19,8 @@ HUBOT_HOME_ASSISTANT_MONITOR_EVENTS=$(jq --raw-output ".hubot_home_assistant_mon
 HUBOT_HOME_ASSISTANT_MONITOR_ALL_ENTITIES=$(jq --raw-output ".hubot_home_assistant_monitor_all_entities // empty" $CONFIG_PATH)
 HUBOT_HOME_ASSISTANT_EVENTS_DESTINATION=$(jq --raw-output ".hubot_home_assistant_events_destination // empty" $CONFIG_PATH)
 
-# Store generated UUID if not set
-if [ -z "${UUID}" ]; then
-  UUID=${DEFAULT_UUID^^}
-  NEW_CONF=$(jq --arg uuid ${UUID} '. + {uuid: $uuid}' $CONFIG_PATH)
-  echo "No UUID found, updating config with a generated UUID"
-  echo $NEW_CONF
-  echo $NEW_CONF > $CONFIG_PATH
-fi
-
 cat /external-scripts.json > /data/external-scripts.json
-ln -s /data/external-scripts.json ./external-scripts.json
-
-ls -lrta .
-ls -lrt ./bin
+cat /external-scripts.json  > /usr/src/hubot/external-scripts.json
 
 HUBOT_SLACK_TOKEN=$HUBOT_SLACK_TOKEN HUBOT_HOME_ASSISTANT_HOST="$HUBOT_HOME_ASSISTANT_HOST" \
 HUBOT_HOME_ASSISTANT_API_PASSWORD=$HUBOT_HOME_ASSISTANT_API_PASSWORD \

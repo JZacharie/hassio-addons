@@ -1,6 +1,6 @@
 {
   "name": "Hassio Hubot",
-  "version": "0.11",
+  "version": "0.12",
   "slug": "hassio_hubot",
   "description": "Packaged Hubot and hubot-homeassistant for Hassio",
   "url": "https://github.com/MrRaph/hassio-addons/tree/master/hassio-hubot",
@@ -10,7 +10,6 @@
     "aarch64"
   ],
   "options": {
-    "uuid": "",
     "hubot_slack_token": "",
     "hubot_home_assistant_host": "",
     "hubot_home_assistant_api_password": "",
@@ -19,7 +18,6 @@
     "hubot_home_assistant_events_destination": "#home-assistant"
   },
   "schema": {
-    "uuid": "match(^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[34][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})?$)?",
     "hubot_slack_token": "str",
     "hubot_home_assistant_host": "str",
     "hubot_home_assistant_api_password": "str",
