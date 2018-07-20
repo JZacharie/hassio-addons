@@ -6,6 +6,9 @@
   "url": "https://github.com/MrRaph/hassio-addons/tree/master/hassio-hubot",
   "startup": "services",
   "boot": "auto",
+  "arch": [
+    "aarch64"
+  ],
   "options": {
     "uuid": "",
     "hubot_slack_token": "",

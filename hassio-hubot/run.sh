@@ -30,21 +30,15 @@ if [ -z "${UUID}" ]; then
   echo $NEW_CONF > $CONFIG_PATH
 fi
 
-chmod -R g+rwx /hubot
-cd /hubot
-
 cat /external-scripts.json > /data/external-scripts.json
-rm -f /hubot/external-scripts.json
-ln -s /data/external-scripts.json /hubot/external-scripts.json
+ln -s /data/external-scripts.json ./external-scripts.json
 
 ls -lrta .
 ls -lrt ./bin
-
-chmod +x /hubot/bin/hubot
 
 HUBOT_SLACK_TOKEN=$HUBOT_SLACK_TOKEN HUBOT_HOME_ASSISTANT_HOST="$HUBOT_HOME_ASSISTANT_HOST" \
 HUBOT_HOME_ASSISTANT_API_PASSWORD=$HUBOT_HOME_ASSISTANT_API_PASSWORD \
 HUBOT_HOME_ASSISTANT_MONITOR_EVENTS=$HUBOT_HOME_ASSISTANT_MONITOR_EVENTS \
 HUBOT_HOME_ASSISTANT_MONITOR_ALL_ENTITIES=$HUBOT_HOME_ASSISTANT_MONITOR_ALL_ENTITIES \
 HUBOT_HOME_ASSISTANT_EVENTS_DESTINATION="$HUBOT_HOME_ASSISTANT_EVENTS_DESTINATION" \
-/hubot/bin/hubot --adapter slack
+./bin/hubot --adapter slack

@@ -1,20 +1,36 @@
-ARG BUILD_FROM
-FROM ${BUILD_FROM}
+FROM aarch64/node:7.7.1-slim
 
-ENV LANG C.UTF-8
+# Experimental ARMv8 support for Node-RED
 
-RUN apk add --update nodejs nodejs-npm jq curl && \
-    npm config set unsafe-perm true && npm install -g yo generator-hubot && \
-    mkdir -p /hubot /root/.config/insight-nodejs && \
-    chmod g+rwx /root /root/.npm /root/.config /root/.config/insight-nodejs /hubot && \
-    chmod -R 777 /hubot && cd /hubot && \
-    yo hubot --owner="Hubot HomeAssistant" --name="Hubot" --adapter=slack --description="Homeassistant Hubot" -f && \
-    npm install hubot-home-assistant --save
+# Home directory for Node-RED application source code.
+RUN mkdir -p /usr/src/hubot
+
+# User data directory, contains flows, config and nodes.
+RUN mkdir /data
+
+
+RUN curl http://ftp.de.debian.org/debian/pool/main/j/jq/jq_1.4-2.1+deb8u1_arm64.deb > jq.deb && \
+    dpkg -i jq.deb
+
+WORKDIR /usr/src/hubot
+
+# Add hubot user so we aren't running as root.
+RUN useradd --home-dir /usr/src/hubot --no-create-home hubot \
+    && chown -R hubot:hubot /data \
+    && chown -R hubot:hubot /usr/src/hubot
 
 COPY external-scripts.json /external-scripts.json
-
 COPY run.sh /
 RUN chmod a+x /run.sh
 
+USER hubot
+
+# package.json contains Node-RED NPM module and node dependencies
+#COPY package.json /usr/src/hubot/
+#RUN npm install
+
+RUN npm install -g generator-hubot yo && \
+    yo hubot --owner="Hubot HomeAssistant" --name="Hubot" --adapter=slack --description="Homeassistant Hubot" -f && \
+    npm install hubot-home-assistant --save
 
 CMD [ "/run.sh" ]
