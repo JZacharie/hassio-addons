@@ -19,9 +19,6 @@ HUBOT_HOME_ASSISTANT_MONITOR_EVENTS=$(jq --raw-output ".hubot_home_assistant_mon
 HUBOT_HOME_ASSISTANT_MONITOR_ALL_ENTITIES=$(jq --raw-output ".hubot_home_assistant_monitor_all_entities // empty" $CONFIG_PATH)
 HUBOT_HOME_ASSISTANT_EVENTS_DESTINATION=$(jq --raw-output ".hubot_home_assistant_events_destination // empty" $CONFIG_PATH)
 
-cat /external-scripts.json > /data/external-scripts.json
-cat /external-scripts.json  > /usr/src/hubot/external-scripts.json
-
 HUBOT_SLACK_TOKEN=$HUBOT_SLACK_TOKEN HUBOT_HOME_ASSISTANT_HOST="$HUBOT_HOME_ASSISTANT_HOST" \
 HUBOT_HOME_ASSISTANT_API_PASSWORD=$HUBOT_HOME_ASSISTANT_API_PASSWORD \
 HUBOT_HOME_ASSISTANT_MONITOR_EVENTS=$HUBOT_HOME_ASSISTANT_MONITOR_EVENTS \

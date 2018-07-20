@@ -19,9 +19,9 @@ RUN useradd --home-dir /usr/src/hubot --no-create-home hubot \
     && chown -R hubot:hubot /data \
     && chown -R hubot:hubot /usr/src/hubot
 
-COPY external-scripts.json /external-scripts.json
+COPY external-scripts.json /usr/src/hubot/external-scripts.json.new
 COPY run.sh /
-RUN chmod a+x /run.sh
+RUN chmod a+x /run.sh && chown -R hubot:hubot /usr/src/hubot
 
 USER hubot
 
@@ -31,6 +31,9 @@ USER hubot
 
 RUN npm install -g generator-hubot yo && \
     yo hubot --owner="Hubot HomeAssistant" --name="Hubot" --adapter=slack --description="Homeassistant Hubot" -f && \
-    npm install hubot-home-assistant --save
+    npm install hubot-home-assistant --save && \
+    rm -f /usr/src/hubot/external-scripts.json
+
+RUN sed -e '4d' /usr/src/hubot/external-scripts.json.new > /usr/src/hubot/external-scripts.json
 
 CMD [ "/run.sh" ]
