@@ -19,7 +19,4 @@ sed -i "s/##ACME_EMAIL##/${ACME_EMAIL}" /traefik.toml
 
 cp /traefik.toml ${TRAEFIK_CONFIG_PATH}
 
-/traefik --web --logLevel=DEBUG --docker --docker.domain="${BASE_DOMAIN}" --docker.watch \
---acme --acme.storage=${ACME_PATH}/acme.json acme.email="${ACME_EMAIL}" --acme.entryPoint=https \
---entryPoints='Name:https Address::443 TLS' --entryPoints='Name:http Address::80 Redirect.EntryPoint:https' \
---defaultentrypoints=http,https --acme.domains="${ACME_DOMAINS}"
+/traefik --logLevel=DEBUG -c ${TRAEFIK_CONFIG_PATH}
