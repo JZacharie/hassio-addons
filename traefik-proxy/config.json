@@ -19,5 +19,12 @@
     "ACME_EMAIL": "str",
     "ACME_DOMAINS": "str"
   },
+  "ports": {
+    "8080/tcp": 8080,
+    "80/tcp": 80,
+    "443/tcp": 443
+  },
+  "docker_api": true,
+  "devices": [ "/var/run/docker.sock:/var/run/docker.sock:rw" ],
   "image": "mrraph/{arch}-hassio-addon-traefik"
 }

@@ -1,0 +1,40 @@
+defaultEntryPoints = ["http", "https"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+  compress = true
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+  compress = true
+    [entryPoints.https.tls]
+  [entryPoints.dashboard]
+    address = ":8080"
+    compress = true
+
+[acme]
+email = "##ACME_EMAIL##"
+storage = "/data/acme/acme.json"
+caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
+entryPoint = "https"
+  [acme.httpChallenge]
+  entryPoint = "http"
+
+[[acme.domains]]
+  main = "##BASE_DOMAIN##"
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "##BASE_DOMAIN##"
+watch = true
+filename = "/docker.tmpl"
+# templateVersion = 2
+exposedByDefault = true
+usebindportip = true
+swarmMode = false
+
+[api]
+entryPoint = "dashboard"
+debug = true
