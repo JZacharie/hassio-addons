@@ -1,0 +1,23 @@
+{
+  "name": "Hassio Traefik",
+  "version": "0.1",
+  "slug": "hassio_traefik",
+  "description": "Packaged Traefik reverse proxy for Hassio",
+  "url": "https://github.com/MrRaph/hassio-addons/tree/master/traefik-proxy",
+  "startup": "services",
+  "boot": "auto",
+  "arch": [
+    "amd64"
+  ],
+  "options": {
+    "BASE_DOMAIN": "",
+    "ACME_EMAIL": "",
+    "ACME_DOMAINS": ""
+  },
+  "schema": {
+    "BASE_DOMAIN": "str",
+    "ACME_EMAIL": "str",
+    "ACME_DOMAINS": "str"
+  },
+  "image": "mrraph/{arch}-hassio-addon-traefik"
+}
