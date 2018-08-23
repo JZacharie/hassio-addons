@@ -7,7 +7,10 @@
   "startup": "services",
   "boot": "auto",
   "arch": [
-    "amd64"
+    "aarch64",
+    "amd64",
+    "armhf",
+    "i386"
   ],
   "options": {
     "BASE_DOMAIN": "",
@@ -24,6 +27,5 @@
     "80/tcp": 80,
     "443/tcp": 443
   },
-  "docker_api": true,
-  "image": "mrraph/{arch}-hassio-addon-traefik"
+  "docker_api": true
 }
