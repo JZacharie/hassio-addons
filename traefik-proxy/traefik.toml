@@ -1,4 +1,4 @@
-defaultEntryPoints = ["https"]
+defaultEntryPoints = ["http","https"]
 
 [entryPoints]
   [entryPoints.http]
@@ -10,6 +10,9 @@ defaultEntryPoints = ["https"]
   address = ":443"
   compress = true
     [entryPoints.https.tls]
+        [[entryPoints.https.tls.certificates]]
+          certFile = "/ssl/##SSL_CRT##"
+          keyFile = "/ssl/##SSL_KEY##"
   [entryPoints.dashboard]
     address = ":8080"
     compress = true
