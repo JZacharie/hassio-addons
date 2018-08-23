@@ -11,13 +11,13 @@
   ],
   "options": {
     "BASE_DOMAIN": "",
-    "ACME_EMAIL": "",
-    "ACME_DOMAINS": ""
+    "ACME_ENABLED": "",
+    "ACME_EMAIL": ""
   },
   "schema": {
     "BASE_DOMAIN": "str",
-    "ACME_EMAIL": "str",
-    "ACME_DOMAINS": "str"
+    "ACME_ENABLED": "str",
+    "ACME_EMAIL": "str"
   },
   "ports": {
     "8080/tcp": 8080,

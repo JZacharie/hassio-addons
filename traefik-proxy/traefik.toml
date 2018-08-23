@@ -4,8 +4,8 @@ defaultEntryPoints = ["http", "https"]
   [entryPoints.http]
   address = ":80"
   compress = true
-    [entryPoints.http.redirect]
-    entryPoint = "https"
+##ACME_ENABLED    [entryPoints.http.redirect]
+##ACME_ENABLED    entryPoint = "https"
   [entryPoints.https]
   address = ":443"
   compress = true
@@ -14,16 +14,20 @@ defaultEntryPoints = ["http", "https"]
     address = ":8080"
     compress = true
 
-[acme]
-email = "##ACME_EMAIL##"
-storage = "/data/acme/acme.json"
-caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
-entryPoint = "https"
-  [acme.httpChallenge]
-  entryPoint = "http"
+##ACME_ENABLED[acme]
+##ACME_ENABLEDemail = "##ACME_EMAIL##"
+##ACME_ENABLEDstorage = "/data/acme/acme.json"
+##ACME_ENABLEDcaServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
+##ACME_ENABLEDentryPoint = "https"
+##ACME_ENABLED  [acme.httpChallenge]
+##ACME_ENABLED  entryPoint = "http"
 
-[[acme.domains]]
-  main = "##BASE_DOMAIN##"
+##ACME_ENABLED[[acme.domains]]
+##ACME_ENABLED  main = "##BASE_DOMAIN##"
+
+[api]
+entryPoint = "dashboard"
+debug = true
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
@@ -35,6 +39,26 @@ exposedByDefault = true
 usebindportip = true
 swarmMode = false
 
-[api]
-entryPoint = "dashboard"
-debug = true
+[file]
+
+# Backends
+[backends]
+
+  [backends.homeassistant]
+
+    [backends.homeassistant.servers]
+      [backends.homeassistant.servers.server0]
+        url = "http://homeassistant:8123/"
+        weight = 1
+
+# Frontends
+[frontends]
+
+  [frontends.homeassistant]
+    entryPoints = ["http", "https"]
+    backend = "homeassistant"
+    passHostHeader = true
+
+    [frontends.homeassistant.routes]
+      [frontends.homeassistant.routes.route0]
+        rule = "Host:##BASE_DOMAIN##"
