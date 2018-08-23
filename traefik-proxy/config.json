@@ -1,6 +1,6 @@
 {
   "name": "Hassio Traefik",
-  "version": "0.1.6.1",
+  "version": "0.1.6.2",
   "slug": "hassio_traefik",
   "description": "Packaged Traefik reverse proxy for Hassio",
   "url": "https://github.com/MrRaph/hassio-addons/tree/master/traefik-proxy",
