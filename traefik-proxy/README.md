@@ -35,8 +35,8 @@ Fort example, if your HassIO box's hostname is `myhass.io` and you're running th
 
 Here is the reuslting frontend configuration :
 
-![images/frontend_configuration.png](Fronted Configuration)
+![Fronted Configuration](./images/frontend_configuration.png)
 
 The path under which the addon will be served can be guessed by going to the addon's configuration page.
 
-![images/path_guessing.png](Path Guessing)
+![Path Guessing](./images/path_guessing.png)
