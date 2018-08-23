@@ -14,7 +14,7 @@
   ],
   "options": {
     "BASE_DOMAIN": "",
-    "ACME_ENABLED": "",
+    "ACME_ENABLED": "true",
     "ACME_EMAIL": ""
   },
   "schema": {

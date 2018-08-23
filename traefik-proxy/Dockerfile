@@ -1,14 +1,14 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 ARG BUILD_FROM
+ARG BUILD_ARCH
 
 ENV LANG C.UTF-8 \
     TERM="xterm-256color"
     
 RUN mkdir /data && \
     apk add --no-cache jq && \
-    export BUILD_ARCH=$(echo ${BUILD_FROM} | awk -F'-' '{ print $2}' | awk -F':' '{ print $1}') && \
-    echo $BUILD_FROM && \
+    echo $BUILD_ARCH && \
     if [[ "x$BUILD_ARCH" = "xamd64" ]] ; then export TRAEFIK_ARCH="amd64" ; fi && \
     if [[ "x$BUILD_ARCH" = "xaarch64" ]] ; then export TRAEFIK_ARCH="arm64" ; fi && \
     if [[ "x$BUILD_ARCH" = "xarmhf" ]] ; then export TRAEFIK_ARCH="arm" ; fi && \
