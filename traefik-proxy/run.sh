@@ -20,7 +20,7 @@ mkdir -p ${ACME_PATH}
 
 sed -i "s/##BASE_DOMAIN##/${BASE_DOMAIN}/" /traefik.toml
 sed -i "s/##ACME_EMAIL##/${ACME_EMAIL}/" /traefik.toml
-sed -i "s/####SSL_CRT##/${SSL_CRT}/" /traefik.toml
+sed -i "s/###SSL_CRT##/${SSL_CRT}/" /traefik.toml
 sed -i "s/##SSL_KEY##/${SSL_KEY}/" /traefik.toml
 
 if [[ ${ACME_ENABLED} -eq "true" ]]
