@@ -32,3 +32,11 @@ Traefik will be launched in an unprotected container, that will be able to liste
 It'll then automatically expose all your container that are exposing some ports on your HassIO box.
 
 Fort example, if your HassIO box's hostname is `myhass.io` and you're running the [Log Viewer](https://github.com/hassio-addons/addon-log-viewer) addon that's listen on port 4277, it'll exposed with the following URL : http(s)://myhass.io/addon_a0d7b954_logviewer/.
+
+Here is the reuslting frontend configuration :
+
+![Fronted Configuration](images/frontend_configuration.png)
+
+The path under which the addon will be served can be guessed by going to the addon's configuration page.
+
+![Path Guessing](images/path_guessing.png)
