@@ -19,8 +19,10 @@ defaultEntryPoints = ["http", "https"]
 ##ACME_ENABLEDstorage = "/data/acme/acme.json"
 ##ACME_ENABLEDcaServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
 ##ACME_ENABLEDentryPoint = "https"
-##ACME_ENABLED  [acme.httpChallenge]
-##ACME_ENABLED  entryPoint = "http"
+##ACME_ENABLED  #[acme.httpChallenge]
+##ACME_ENABLED  #entryPoint = "http"
+##ACME_ENABLEDonHostRule = true
+##ACME_ENABLEDonDemand = true
 
 ##ACME_ENABLED[[acme.domains]]
 ##ACME_ENABLED  main = "##BASE_DOMAIN##"
