@@ -1,6 +1,6 @@
 {
   "name": "Hassio Traefik",
-  "version": "0.1.6.2",
+  "version": "0.1.7",
   "slug": "hassio_traefik",
   "description": "Packaged Traefik reverse proxy for Hassio",
   "url": "https://github.com/MrRaph/hassio-addons/tree/master/traefik-proxy",
@@ -12,10 +12,9 @@
     "armhf",
     "i386"
   ],
-  "map": ["ssl"],
   "options": {
-    "BASE_DOMAIN": "",
-    "ACME_ENABLED": "true",
+    "BASE_DOMAIN": "hassio.local",
+    "ACME_ENABLED": "false",
     "ACME_EMAIL": "",
     "certfile": "fullchain.pem",
     "keyfile": "privkey.pem"
@@ -28,9 +27,7 @@
     "keyfile": "str"
   },
   "ports": {
-    "8080/tcp": 8080,
-    "80/tcp": 8888,
-    "443/tcp": 443
+    "8080/tcp": 8080
   },
   "docker_api": true
 }

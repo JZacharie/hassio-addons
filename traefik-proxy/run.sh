@@ -23,10 +23,10 @@ sed -i "s/##ACME_EMAIL##/${ACME_EMAIL}/" /traefik.toml
 sed -i "s/##SSL_CRT##/${SSL_CRT}/" /traefik.toml
 sed -i "s/##SSL_KEY##/${SSL_KEY}/" /traefik.toml
 
-if [[ ${ACME_ENABLED} -eq "true" ]]
-then
-    sed -i 's/^##ACME_ENABLED//' /traefik.toml
-fi
+#if [[ ${ACME_ENABLED} -eq "true" ]]
+#then
+#    sed -i 's/^##ACME_ENABLED//' /traefik.toml
+#fi
 
 cp /traefik.toml ${TRAEFIK_CONFIG_PATH}
 
