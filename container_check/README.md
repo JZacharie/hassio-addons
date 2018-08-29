@@ -9,6 +9,6 @@ You should configure it to give Docker's API access to Traefik Proxy.
 
 ````
 {
-  "target": "bfa1c843_hassio_traefik"
+  "target": "bfa1c843_hassio_healthcheck"
 }
 ````
