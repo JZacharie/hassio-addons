@@ -13,8 +13,8 @@ MAXIMUM_NUMBER_OF_ATTEMPTS = 3
 def ping():
     return "Pong"
 
-@app.route('/check/url', methods = ['GET', 'POST'])
-def check_url():
+@app.route('/check/url/<url>', methods = ['GET', 'POST'])
+def check_url(url):
 
     if request.method == 'POST' and request.form['url'] != '':
         url = request.form['url']
