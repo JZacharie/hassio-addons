@@ -27,7 +27,7 @@
     "keyfile": "str"
   },
   "ports": {
-    "11111/tcp": 11111
+    "5000/tcp": 5000
   },
   "docker_api": true,
   "homeassistant_api": true
