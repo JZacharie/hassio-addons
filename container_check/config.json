@@ -13,18 +13,8 @@
     "i386"
   ],
   "options": {
-    "BASE_DOMAIN": "hassio.local",
-    "ACME_ENABLED": "false",
-    "ACME_EMAIL": "",
-    "certfile": "fullchain.pem",
-    "keyfile": "privkey.pem"
   },
   "schema": {
-    "BASE_DOMAIN": "str",
-    "ACME_ENABLED": "str",
-    "ACME_EMAIL": "str",
-    "certfile": "str",
-    "keyfile": "str"
   },
   "ports": {
     "5000/tcp": 5000
