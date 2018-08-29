@@ -44,9 +44,9 @@ def check_url():
 
 
     if r < 500:
-        message = "It works !"
+        message = "It works ! URL :" + url
     else:
-        message = "Outch !!!"
+        message = "Outch !!! URL :" + url
 
     
     return Response(message, status=r, mimetype='text/plain')
@@ -64,8 +64,8 @@ def list_containers():
 def restart_container():
     client = docker.from_env()
 
-    if request.method == 'POST' and request.form['container'] != '':
-        container = request.form['container']
+    if request.method == 'POST' and request.headers['Content-Type'] == 'application/json':
+        container = request.json['container']
         client.containers.get(container).restart()
 
     return "Toto"
