@@ -41,7 +41,7 @@ def check_url():
         r = 500
 
 
-    if r == 200:
+    if r < 500:
         message = "It works !"
     else:
         message = "Outch !!!"

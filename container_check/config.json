@@ -1,6 +1,6 @@
 {
   "name": "Hassio Health Checks",
-  "version": "0.1",
+  "version": "0.1.8",
   "slug": "hassio_healthcheck",
   "description": "Hassio HealthChecks utils",
   "url": "https://github.com/MrRaph/hassio-addons/tree/master/traefik-proxy",
