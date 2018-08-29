@@ -1,6 +1,8 @@
 from flask import Flask
 from flask import Response
 from flask import request
+from flask import json
+
 import docker
 import urllib
 import errno, time
@@ -13,11 +15,11 @@ MAXIMUM_NUMBER_OF_ATTEMPTS = 3
 def ping():
     return "Pong"
 
-@app.route('/check/url/<url>', methods = ['GET', 'POST'])
-def check_url(url):
+@app.route('/check/url', methods = ['GET', 'POST'])
+def check_url():
 
-    if request.method == 'POST' and request.form['url'] != '':
-        url = request.form['url']
+    if request.method == 'POST' and request.headers['Content-Type'] == 'application/json':
+        url = request.json['url']
     else:
         url = "http://127.0.0.1:5000/ping"
 
