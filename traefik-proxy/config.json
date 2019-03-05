@@ -3,7 +3,7 @@
   "version": "0.1.7.1",
   "slug": "hassio_traefik",
   "description": "Packaged Traefik reverse proxy for Hassio",
-  "url": "https://github.com/MrRaph/hassio-addons/tree/master/traefik-proxy",
+  "url": "https://github.com/JZacharie/hassio-addons/tree/master/traefik-proxy",
   "startup": "services",
   "boot": "auto",
   "arch": [
